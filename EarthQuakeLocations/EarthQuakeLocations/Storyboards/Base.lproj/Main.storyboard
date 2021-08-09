@@ -21,24 +21,92 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v9O-dB-tGY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-855" y="-23"/>
+            <point key="canvasLocation" x="-561" y="-23"/>
         </scene>
         <!--Earth Quakes Locations-->
         <scene sceneID="Z4x-vO-mGY">
             <objects>
                 <tableViewController storyboardIdentifier="EarthQuakeListViewController" clearsSelectionOnViewWillAppear="NO" id="E73-HG-yNq" customClass="EarthQuakeListViewController" customModule="EarthQuakeLocations" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="dl7-9q-FE4">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="dl7-9q-FE4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="07w-vk-Z7l">
-                                <rect key="frame" x="0.0" y="24.5" width="414" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EarthQuakeItemCell" rowHeight="155" id="07w-vk-Z7l" customClass="EarthQuakeItemCell" customModule="EarthQuakeLocations" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="24.5" width="414" height="155"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="07w-vk-Z7l" id="Hgr-4D-pBF">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="155"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dqb-bS-9TS">
+                                            <rect key="frame" x="8" y="8" width="398" height="139"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="exclamationmark.triangle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="isc-fq-9Od">
+                                                    <rect key="frame" x="16" y="55.5" width="30" height="28"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="1py-cY-3WH"/>
+                                                        <constraint firstAttribute="width" constant="30" id="k2a-BW-kDn"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oy3-Ey-ctz">
+                                                    <rect key="frame" x="62" y="16" width="274" height="19.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U4Y-zG-NJL">
+                                                    <rect key="frame" x="62" y="51.5" width="274" height="21"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.forward" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="qMR-Mx-IPj">
+                                                    <rect key="frame" x="352" y="56.5" width="30" height="26.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="c47-BM-WVL"/>
+                                                        <constraint firstAttribute="width" constant="30" id="ftw-Xu-nja"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m0W-DU-ofa">
+                                                    <rect key="frame" x="16" y="104.5" width="366" height="1"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="QI2-O5-HPd"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <constraints>
+                                                <constraint firstItem="qMR-Mx-IPj" firstAttribute="leading" secondItem="Oy3-Ey-ctz" secondAttribute="trailing" constant="16" id="BUl-RX-pXW"/>
+                                                <constraint firstItem="Oy3-Ey-ctz" firstAttribute="leading" secondItem="isc-fq-9Od" secondAttribute="trailing" constant="16" id="Cmt-L5-XPh"/>
+                                                <constraint firstAttribute="trailing" secondItem="qMR-Mx-IPj" secondAttribute="trailing" constant="16" id="D3C-Qb-p82"/>
+                                                <constraint firstItem="U4Y-zG-NJL" firstAttribute="top" secondItem="Oy3-Ey-ctz" secondAttribute="bottom" constant="16" id="JRs-5M-m10"/>
+                                                <constraint firstItem="Oy3-Ey-ctz" firstAttribute="top" secondItem="Dqb-bS-9TS" secondAttribute="top" constant="16" id="Jc6-Wx-Di2"/>
+                                                <constraint firstItem="qMR-Mx-IPj" firstAttribute="centerY" secondItem="Dqb-bS-9TS" secondAttribute="centerY" id="PQd-PQ-kyB"/>
+                                                <constraint firstItem="isc-fq-9Od" firstAttribute="leading" secondItem="Dqb-bS-9TS" secondAttribute="leading" constant="16" id="QTu-bK-mgT"/>
+                                                <constraint firstItem="m0W-DU-ofa" firstAttribute="leading" secondItem="isc-fq-9Od" secondAttribute="leading" id="RtC-8m-Zza"/>
+                                                <constraint firstItem="U4Y-zG-NJL" firstAttribute="leading" secondItem="isc-fq-9Od" secondAttribute="trailing" constant="16" id="SyN-ST-bxF"/>
+                                                <constraint firstItem="m0W-DU-ofa" firstAttribute="top" secondItem="U4Y-zG-NJL" secondAttribute="bottom" constant="32" id="c9I-4J-5IV"/>
+                                                <constraint firstItem="qMR-Mx-IPj" firstAttribute="leading" secondItem="U4Y-zG-NJL" secondAttribute="trailing" constant="16" id="d3q-r7-b6y"/>
+                                                <constraint firstItem="isc-fq-9Od" firstAttribute="centerY" secondItem="Dqb-bS-9TS" secondAttribute="centerY" id="lGp-Ci-KiL"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="m0W-DU-ofa" secondAttribute="bottom" constant="16" id="oDm-du-8jL"/>
+                                                <constraint firstItem="m0W-DU-ofa" firstAttribute="trailing" secondItem="qMR-Mx-IPj" secondAttribute="trailing" id="oqO-Xj-stR"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Dqb-bS-9TS" firstAttribute="leading" secondItem="Hgr-4D-pBF" secondAttribute="leading" constant="8" id="Bsj-ri-7fD"/>
+                                        <constraint firstAttribute="trailing" secondItem="Dqb-bS-9TS" secondAttribute="trailing" constant="8" id="dGl-dq-iHS"/>
+                                        <constraint firstAttribute="bottom" secondItem="Dqb-bS-9TS" secondAttribute="bottom" constant="8" id="f5T-Kn-IE0"/>
+                                        <constraint firstItem="Dqb-bS-9TS" firstAttribute="top" secondItem="Hgr-4D-pBF" secondAttribute="top" constant="8" id="s5u-rp-RkP"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="dateTimeLabel" destination="Oy3-Ey-ctz" id="lw0-hw-qL8"/>
+                                    <outlet property="magnitudeLabel" destination="U4Y-zG-NJL" id="Nnj-0W-miL"/>
+                                    <outlet property="warningImage" destination="isc-fq-9Od" id="Npp-dQ-xRC"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -50,7 +118,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uxX-FE-n29" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="37" y="-771"/>
+            <point key="canvasLocation" x="36.231884057971016" y="-771.42857142857144"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DvO-m5-fgv">
@@ -71,7 +139,7 @@
         <!--Split View Controller-->
         <scene sceneID="Q8R-wp-e3x">
             <objects>
-                <splitViewController allowDoubleColumnStyle="YES" preferredDisplayMode="twoBeside" behavior="displace" id="mR4-3V-YsP" sceneMemberID="viewController">
+                <splitViewController allowDoubleColumnStyle="YES" preferredDisplayMode="twoDisplace" id="mR4-3V-YsP" sceneMemberID="viewController">
                     <connections>
                         <segue destination="SVO-TQ-6Qt" kind="relationship" relationship="masterViewController" id="SnH-73-qOv"/>
                         <segue destination="w5o-76-357" kind="relationship" relationship="detailViewController" id="5DD-j8-CrS"/>
@@ -82,7 +150,10 @@
             <point key="canvasLocation" x="-1745" y="-468"/>
         </scene>
     </scenes>
+    <color key="tintColor" red="1" green="0.3885345176268965" blue="0.50074748926217283" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
     <resources>
+        <image name="chevron.forward" catalog="system" width="96" height="128"/>
+        <image name="exclamationmark.triangle.fill" catalog="system" width="128" height="112"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

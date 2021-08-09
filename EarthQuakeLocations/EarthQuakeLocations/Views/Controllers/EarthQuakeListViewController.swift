@@ -9,7 +9,7 @@ import UIKit
 
 class EarthQuakeListViewController: UITableViewController {
 
-    var selectedEvent: Bool = false
+    let events = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]
 }
 
 
@@ -25,22 +25,23 @@ class EarthQuakeListViewController: UITableViewController {
 //    }
 //}
 
-///// Tableview Data source methods
-//extension EarthQuakeListViewController{
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return 10//self.forcastList[section].times.count
-//    }
-//
-//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "EarthQuakeItemCell", for: indexPath) as! EarthQuakeItemCell
-//
-//        //cell.configureCell(time: self.forcastList[indexPath.section].times[indexPath.row])
-//        cell.selectionStyle = .none
-//
-//        return cell
-//    }
-//}
-//
+/// Tableview Data source methods
+extension EarthQuakeListViewController{
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return events.count//self.forcastList[section].times.count
+    }
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "EarthQuakeItemCell", for: indexPath) as! EarthQuakeItemCell
+
+        //cell.configureCell(time: self.forcastList[indexPath.section].times[indexPath.row])
+        //cell.selectionStyle = .none
+        cell.textLabel?.text = events[indexPath.row]
+
+        return cell
+    }
+}
+
 //class SplitViewController: UISplitViewController, UISplitViewControllerDelegate {
 //
 //    override func viewDidLoad() {

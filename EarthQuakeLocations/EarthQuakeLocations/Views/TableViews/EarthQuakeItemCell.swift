@@ -8,7 +8,12 @@
 import UIKit
 
 class EarthQuakeItemCell: UITableViewCell {
-
+    
+    
+    @IBOutlet weak var dateTimeLabel: UILabel!
+    @IBOutlet weak var magnitudeLabel: UILabel!
+    @IBOutlet weak var warningImage: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
