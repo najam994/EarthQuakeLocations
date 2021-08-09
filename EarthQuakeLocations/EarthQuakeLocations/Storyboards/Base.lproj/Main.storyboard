@@ -158,7 +158,7 @@
         <!--Split View Controller-->
         <scene sceneID="Q8R-wp-e3x">
             <objects>
-                <splitViewController allowDoubleColumnStyle="YES" preferredDisplayMode="twoDisplace" behavior="displace" id="mR4-3V-YsP" sceneMemberID="viewController">
+                <splitViewController allowDoubleColumnStyle="YES" preferredDisplayMode="twoDisplace" id="mR4-3V-YsP" sceneMemberID="viewController">
                     <connections>
                         <segue destination="SVO-TQ-6Qt" kind="relationship" relationship="masterViewController" id="SnH-73-qOv"/>
                         <segue destination="w5o-76-357" kind="relationship" relationship="detailViewController" id="5DD-j8-CrS"/>
