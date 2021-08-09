@@ -23,11 +23,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
               let earthQuakesListViewController = leftNavigationViewController.viewControllers.first as? EarthQuakeListViewController,
               let rightNavigationViewController = splitViewController.viewControllers.last as? UINavigationController,
               let mapViewController = rightNavigationViewController.viewControllers.last as? MapViewController
-        
         else {
             fatalError()
         }
-        
+        earthQuakesListViewController.delagate = mapViewController
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {

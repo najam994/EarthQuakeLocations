@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mR4-3V-YsP">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -15,9 +16,26 @@
                     <view key="view" contentMode="scaleToFill" id="7ZL-9k-w55">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="MLo-kb-Ll5">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <connections>
+                                    <outlet property="delegate" destination="w5o-76-357" id="N8f-nH-09r"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Ggc-0j-zWi"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="MLo-kb-Ll5" firstAttribute="top" secondItem="Ggc-0j-zWi" secondAttribute="top" id="9Ei-VI-ypZ"/>
+                            <constraint firstItem="Ggc-0j-zWi" firstAttribute="trailing" secondItem="MLo-kb-Ll5" secondAttribute="trailing" id="eYn-Pl-L1B"/>
+                            <constraint firstItem="Ggc-0j-zWi" firstAttribute="bottom" secondItem="MLo-kb-Ll5" secondAttribute="bottom" id="rio-pj-0uc"/>
+                            <constraint firstItem="MLo-kb-Ll5" firstAttribute="leading" secondItem="Ggc-0j-zWi" secondAttribute="leading" id="zMV-DI-dCu"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="MLo-kb-Ll5" id="hKK-cz-imT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v9O-dB-tGY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -49,7 +67,7 @@
                                                         <constraint firstAttribute="width" constant="30" id="k2a-BW-kDn"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oy3-Ey-ctz">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oy3-Ey-ctz">
                                                     <rect key="frame" x="62" y="16" width="274" height="19.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
@@ -69,10 +87,10 @@
                                                     </constraints>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m0W-DU-ofa">
-                                                    <rect key="frame" x="16" y="104.5" width="366" height="1"/>
+                                                    <rect key="frame" x="16" y="80.5" width="366" height="0.5"/>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="1" id="QI2-O5-HPd"/>
+                                                        <constraint firstAttribute="height" constant="0.5" id="QI2-O5-HPd"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -87,10 +105,10 @@
                                                 <constraint firstItem="isc-fq-9Od" firstAttribute="leading" secondItem="Dqb-bS-9TS" secondAttribute="leading" constant="16" id="QTu-bK-mgT"/>
                                                 <constraint firstItem="m0W-DU-ofa" firstAttribute="leading" secondItem="isc-fq-9Od" secondAttribute="leading" id="RtC-8m-Zza"/>
                                                 <constraint firstItem="U4Y-zG-NJL" firstAttribute="leading" secondItem="isc-fq-9Od" secondAttribute="trailing" constant="16" id="SyN-ST-bxF"/>
-                                                <constraint firstItem="m0W-DU-ofa" firstAttribute="top" secondItem="U4Y-zG-NJL" secondAttribute="bottom" constant="32" id="c9I-4J-5IV"/>
+                                                <constraint firstItem="m0W-DU-ofa" firstAttribute="top" secondItem="U4Y-zG-NJL" secondAttribute="bottom" constant="8" id="c9I-4J-5IV"/>
                                                 <constraint firstItem="qMR-Mx-IPj" firstAttribute="leading" secondItem="U4Y-zG-NJL" secondAttribute="trailing" constant="16" id="d3q-r7-b6y"/>
                                                 <constraint firstItem="isc-fq-9Od" firstAttribute="centerY" secondItem="Dqb-bS-9TS" secondAttribute="centerY" id="lGp-Ci-KiL"/>
-                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="m0W-DU-ofa" secondAttribute="bottom" constant="16" id="oDm-du-8jL"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="m0W-DU-ofa" secondAttribute="bottom" constant="4" id="oDm-du-8jL"/>
                                                 <constraint firstItem="m0W-DU-ofa" firstAttribute="trailing" secondItem="qMR-Mx-IPj" secondAttribute="trailing" id="oqO-Xj-stR"/>
                                             </constraints>
                                         </view>
@@ -103,6 +121,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="containerView" destination="Dqb-bS-9TS" id="EHi-xP-9ZO"/>
                                     <outlet property="dateTimeLabel" destination="Oy3-Ey-ctz" id="lw0-hw-qL8"/>
                                     <outlet property="magnitudeLabel" destination="U4Y-zG-NJL" id="Nnj-0W-miL"/>
                                     <outlet property="warningImage" destination="isc-fq-9Od" id="Npp-dQ-xRC"/>
@@ -139,7 +158,7 @@
         <!--Split View Controller-->
         <scene sceneID="Q8R-wp-e3x">
             <objects>
-                <splitViewController allowDoubleColumnStyle="YES" preferredDisplayMode="twoDisplace" id="mR4-3V-YsP" sceneMemberID="viewController">
+                <splitViewController allowDoubleColumnStyle="YES" preferredDisplayMode="twoDisplace" behavior="displace" id="mR4-3V-YsP" sceneMemberID="viewController">
                     <connections>
                         <segue destination="SVO-TQ-6Qt" kind="relationship" relationship="masterViewController" id="SnH-73-qOv"/>
                         <segue destination="w5o-76-357" kind="relationship" relationship="detailViewController" id="5DD-j8-CrS"/>

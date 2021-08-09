@@ -10,6 +10,7 @@ import UIKit
 class EarthQuakeItemCell: UITableViewCell {
     
     
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var dateTimeLabel: UILabel!
     @IBOutlet weak var magnitudeLabel: UILabel!
     @IBOutlet weak var warningImage: UIImageView!
@@ -17,6 +18,7 @@ class EarthQuakeItemCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.containerView.addShadow()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -26,13 +28,13 @@ class EarthQuakeItemCell: UITableViewCell {
     }
     
     func configureCell(earthQuakeItem: EarthQuakeItem) {
-        self.dateTimeLabel.text = earthQuakeItem.datetime
-        self.magnitudeLabel.text = String(earthQuakeItem.magnitude)
+        self.dateTimeLabel.text =  earthQuakeItem.datetime.toDate()?.toString() ?? ""
+        self.magnitudeLabel.text = "Magnitude: " + String(earthQuakeItem.magnitude)
         if (earthQuakeItem.magnitude >= 8.0){
-            self.warningImage.alpha = 1.0
+            self.warningImage.image = UIImage(systemName: "exclamationmark.triangle.fill")
         } else {
-            self.warningImage.alpha = 0.0
+            self.warningImage.image = UIImage(systemName: "sleep")
         }
+        
     }
-
 }

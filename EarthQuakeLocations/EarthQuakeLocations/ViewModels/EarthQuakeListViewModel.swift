@@ -13,9 +13,13 @@ protocol EarthQuakeListViewModelDelegate {
 
 class EarthQuakeListViewModel {
     
-    let service = EarthQuakeListService()
+    let service: EarthQuakeApi
     var earthQuakeItems = [EarthQuakeItem]()
     var delegate: EarthQuakeListViewModelDelegate?
+    
+    init(service:EarthQuakeApi = EarthQuakeListService()) {
+        self.service = service
+    }
     
     func getEarthQuakeList() {
         self.service.getEarthQuakeList { [unowned self] result in

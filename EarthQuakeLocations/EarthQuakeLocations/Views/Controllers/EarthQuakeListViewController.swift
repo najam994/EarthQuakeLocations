@@ -6,16 +6,19 @@
 //
 
 import UIKit
+protocol EarthQuakeItemSelectedDelegate {
+    func itemSelected(earthQuakeItem: EarthQuakeItem)
+}
 
 class EarthQuakeListViewController: UITableViewController {
     
     ///Variables
     let viewModel = EarthQuakeListViewModel()
     var loadingView: UIView?
+    var delagate: EarthQuakeItemSelectedDelegate?
     
     //MARK: - Life Cycle Functions
     override func viewDidLoad() {
-        
         self.viewModel.delegate = self
         self.loadList()
         self.addRefreshControl()
@@ -76,11 +79,10 @@ extension EarthQuakeListViewController: EarthQuakeListViewModelDelegate{
 extension EarthQuakeListViewController{
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-        print("item tapped at row:", indexPath.row, "in section:", indexPath.section)
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "MapViewController")
-        showDetailViewController(vc, sender: nil)
+        self.delagate?.itemSelected(earthQuakeItem: self.viewModel.earthQuakeItems[indexPath.row])
+        if let mapViewController = delagate as? MapViewController {
+            splitViewController?.showDetailViewController(mapViewController, sender: nil)
+        }
     }
 }
 
