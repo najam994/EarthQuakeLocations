@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mR4-3V-YsP">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Map View Controller-->
+        <scene sceneID="ku9-d3-5Fr">
+            <objects>
+                <viewController storyboardIdentifier="MapViewController" id="w5o-76-357" customClass="MapViewController" customModule="EarthQuakeLocations" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7ZL-9k-w55">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Ggc-0j-zWi"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v9O-dB-tGY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-855" y="-23"/>
+        </scene>
+        <!--Earth Quakes Locations-->
+        <scene sceneID="Z4x-vO-mGY">
+            <objects>
+                <tableViewController storyboardIdentifier="EarthQuakeListViewController" clearsSelectionOnViewWillAppear="NO" id="E73-HG-yNq" customClass="EarthQuakeListViewController" customModule="EarthQuakeLocations" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="dl7-9q-FE4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="07w-vk-Z7l">
+                                <rect key="frame" x="0.0" y="24.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="07w-vk-Z7l" id="Hgr-4D-pBF">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="E73-HG-yNq" id="OsB-Bh-Z1L"/>
+                            <outlet property="delegate" destination="E73-HG-yNq" id="5Km-aS-EqW"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Earth Quakes Locations" id="Wzb-NC-h5o"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uxX-FE-n29" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="37" y="-771"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="DvO-m5-fgv">
+            <objects>
+                <navigationController id="SVO-TQ-6Qt" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sYS-42-HEM">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="E73-HG-yNq" kind="relationship" relationship="rootViewController" id="IvC-vD-4xH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X8f-81-OOH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-854" y="-771"/>
+        </scene>
+        <!--Split View Controller-->
+        <scene sceneID="Q8R-wp-e3x">
+            <objects>
+                <splitViewController allowDoubleColumnStyle="YES" preferredDisplayMode="twoBeside" behavior="displace" id="mR4-3V-YsP" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="SVO-TQ-6Qt" kind="relationship" relationship="masterViewController" id="SnH-73-qOv"/>
+                        <segue destination="w5o-76-357" kind="relationship" relationship="detailViewController" id="5DD-j8-CrS"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HjO-4B-nmy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1745" y="-468"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
