@@ -8,63 +8,95 @@
 import UIKit
 
 class EarthQuakeListViewController: UITableViewController {
-
-    let events = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]
+    
+    ///Variables
+    let viewModel = EarthQuakeListViewModel()
+    var loadingView: UIView?
+    
+    //MARK: - Life Cycle Functions
+    override func viewDidLoad() {
+        
+        self.viewModel.delegate = self
+        self.loadList()
+        self.addRefreshControl()
+    }
+    
+    //MARK: - Custom Functions
+    func addRefreshControl() {
+        self.tableView.refreshControl = UIRefreshControl()
+        self.tableView.refreshControl?.addTarget(self, action: #selector(refreshList), for: .valueChanged)
+    }
+    
+    /// Setup
+    func loadList() {
+        self.showActivityIndicator(shouldShow: true)
+        self.viewModel.getEarthQuakeList()
+    }
+    
+    @objc func refreshList() {
+        self.showActivityIndicator(shouldShow: false)
+        self.viewModel.getEarthQuakeList()
+    }
+    
+    /// Shows activity indicator in middle of screen
+    /// - Parameter shouldShow: boolean value, which determines that should we add or remove activity indicator
+    func showActivityIndicator(shouldShow: Bool) {
+        if(shouldShow){
+            self.loadingView = self.addLoadingView(onView: self.view)
+        }else{
+            self.removeLoadingView(vSpinner: self.loadingView)
+            self.loadingView = nil      //To release memory
+        }
+    }
 }
 
+// MARK: Delegates
+/// EarthQuakeListViewModelDelegate methods
+extension EarthQuakeListViewController: EarthQuakeListViewModelDelegate{
+    func updateList() {
+        DispatchQueue.main.async {
+            self.tableView.refreshControl?.endRefreshing()
+            self.showActivityIndicator(shouldShow: false)
+            self.tableView.reloadData()
+        }
+    }
+    
+    func showError(error: StringError) {
+        DispatchQueue.main.async {
+            self.presentErrorAlert(error: error) {
+                self.tableView.refreshControl?.endRefreshing()
+                self.showActivityIndicator(shouldShow: false)
+                self.loadList()
+            }
+        }
+    }
+}
 
-///// Tableview Delegate methods
-//extension EarthQuakeListViewController{
-//
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-//        print("item tapped at row:", indexPath.row, "in section:", indexPath.section)
-//
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "MapViewController")
-//        showDetailViewController(vc, sender: nil)
-//    }
-//}
+/// Tableview Delegate methods
+extension EarthQuakeListViewController{
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        print("item tapped at row:", indexPath.row, "in section:", indexPath.section)
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "MapViewController")
+        showDetailViewController(vc, sender: nil)
+    }
+}
 
 /// Tableview Data source methods
 extension EarthQuakeListViewController{
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return events.count//self.forcastList[section].times.count
+        return self.viewModel.earthQuakeItems.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "EarthQuakeItemCell", for: indexPath) as! EarthQuakeItemCell
-
-        //cell.configureCell(time: self.forcastList[indexPath.section].times[indexPath.row])
-        //cell.selectionStyle = .none
-        cell.textLabel?.text = events[indexPath.row]
-
+        
+        cell.configureCell(earthQuakeItem: self.viewModel.earthQuakeItems[indexPath.row])
+        cell.selectionStyle = .none
+        
         return cell
     }
 }
-
-//class SplitViewController: UISplitViewController, UISplitViewControllerDelegate {
-//
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//
-//        self.delegate = self
-//        preferredDisplayMode = UISplitViewController.DisplayMode.oneBesideSecondary
-//        preferredSplitBehavior = .tile
-//    }
-//
-////    func splitViewController(_ svc: UISplitViewController, shouldHide vc: UIViewController, in orientation: UIInterfaceOrientation) -> Bool {
-////        return true
-////    }
-////
-////    func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController:UIViewController, onto primaryViewController:UIViewController) -> Bool
-////
-////    {
-////        guard let secondaryAsNavController = secondaryViewController as? UINavigationController else { return false }
-////        guard let topAsDetailController = secondaryAsNavController.topViewController as? EarthQuakeListViewController else { return false }
-////        if topAsDetailController.selectedEvent == nil {
-////            // Return true to indicate that we have handled the collapse by doing nothing; the secondary controller will be discarded.
-////            return true
-////        }
-////        return false
-////    }
-//}

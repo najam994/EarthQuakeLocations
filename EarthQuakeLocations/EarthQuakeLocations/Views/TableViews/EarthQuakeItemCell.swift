@@ -24,5 +24,15 @@ class EarthQuakeItemCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func configureCell(earthQuakeItem: EarthQuakeItem) {
+        self.dateTimeLabel.text = earthQuakeItem.datetime
+        self.magnitudeLabel.text = String(earthQuakeItem.magnitude)
+        if (earthQuakeItem.magnitude >= 8.0){
+            self.warningImage.alpha = 1.0
+        } else {
+            self.warningImage.alpha = 0.0
+        }
+    }
 
 }
